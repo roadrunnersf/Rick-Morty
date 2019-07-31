@@ -1,5 +1,3 @@
-import React from "react";
-
 const randList = (numMax, outputLength) => {
   let array = Array.from({ length: numMax }, (v, k) => k + 1);
   array = shuffle(array);
@@ -21,4 +19,26 @@ const shuffle = oldArray => {
   return array;
 };
 
-export { randList, shuffle };
+const arrKeys = arr => {
+  return arr.map(obj => {
+    return Object.keys(obj)[0];
+  });
+};
+
+const arrVals = arr => {
+  return arr.map(obj => {
+    return Object.values(obj)[0];
+  });
+};
+
+const arrMatches = arr => {
+  const keys = arrKeys(arr);
+  const values = arrVals(arr);
+  let counter = 0;
+  for (var i = 0; i < arr.length; i++) {
+    keys[i] === values[i] && counter++;
+  }
+  return counter;
+};
+
+export { randList, shuffle, arrKeys, arrVals, arrMatches };
