@@ -4,7 +4,6 @@ import ItemTypes from "./ItemTypes";
 import { Card, CardImg, CardHeader, CardText, CardBody } from "reactstrap";
 
 const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
-  const [match, setMatch] = useState(false);
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.TITLE,
     drop: onDrop,
@@ -21,19 +20,16 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
     opacity = 1;
   }
 
-  // lastDroppedItem && setMatch(lastDroppedItem.name === name);
-  // console.log(match);
-
   return (
     <div
       ref={drop}
-      style={{ display: "inline-block", width: 250, height: 310, padding: 5 }}
+      style={{ display: "inline-block", width: 250, height: 350, padding: 5 }}
     >
       <Card
         inverse
         color={
           (lastDroppedItem &&
-            (lastDroppedItem.name == name ? "success" : "primary")) ||
+            (lastDroppedItem.name === name ? "success" : "primary")) ||
           "primary"
         }
       >
