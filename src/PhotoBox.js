@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardImg, CardText, CardBody, CardHeader } from "reactstrap";
-import ContentLoader from "react-content-loader";
+//import ContentLoader from "react-content-loader";
 
 const PhotoBox = props => (
   <div
