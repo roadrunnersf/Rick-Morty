@@ -13,8 +13,8 @@ import NavBar from "../NavBar";
 const Guesser = () => {
   const [pics, setPics] = useState([]);
   const [titles, setTitles] = useState([]);
-  const [scoreTotal, setScoreTotal] = useState(null);
-  const [scoreMax, setScoreMax] = useState(null);
+
+  const [scorer, setScorer] = useState([]);
 
   const [droppedBoxTitles, setDroppedBoxTitles] = useState([]);
   function isDropped(boxTitle) {
@@ -36,15 +36,21 @@ const Guesser = () => {
           }
         })
       );
-      console.log(item.name);
-      console.log(pics[index].name);
-      console.log(item.name === pics[index].name);
+
+      setScorer(prevState =>
+        prevState.map(obj => {
+          if (obj.hasOwnProperty(pics[index].name)) {
+            return { [pics[index].name]: item.name };
+          } else {
+            return obj;
+          }
+        })
+      );
     },
     [droppedBoxTitles, pics]
   );
-
   useEffect(() => {
-    const charIDs = randList(493, 6);
+    const charIDs = [1, 2, 3]; //randList(493, 6);
 
     fetch(`https://rickandmortyapi.com/api/character/${charIDs}`)
       .then(response => response.json())
@@ -62,6 +68,7 @@ const Guesser = () => {
             .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
             .map(obj => ({ ...obj, type: ItemTypes.TITLE }))
         );
+        setScorer(jsonResponse.map(o => ({ [o.name]: undefined })));
       });
   }, []);
 
@@ -97,7 +104,7 @@ const Guesser = () => {
         </Row>
         <Row>
           <Col>
-            <Score total={scoreTotal} max={pics.length} />
+            <Score scorer={scorer} total={6} max={pics.length} />
           </Col>
         </Row>
       </Container>
