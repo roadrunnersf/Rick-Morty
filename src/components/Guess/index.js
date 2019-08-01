@@ -6,6 +6,7 @@ import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
 import { shuffle, createCharacterList } from './../../utils'
+import fetchCharacters from './../../api/characters'
 import ItemTypes from './../../utils/ItemTypes.js'
 
 import Pic from './Pic'
@@ -13,7 +14,7 @@ import Title from './Title'
 import Score from './Score'
 import NavBar from './../Layout/NavBar'
 
-const Guess = props => {
+const Guess = ({ match }) => {
   const [pics, setPics] = useState([])
   const [titles, setTitles] = useState([])
 
@@ -52,27 +53,25 @@ const Guess = props => {
     [droppedBoxTitles, pics]
   )
   useEffect(() => {
-    const charIDs = createCharacterList(props.match)
+    const charIDs = createCharacterList(match)
 
-    fetch(`https://rickandmortyapi.com/api/character/${charIDs}`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setPics(
-          shuffle(jsonResponse).map(obj => ({
-            ...obj,
-            accepts: ItemTypes.TITLE,
-            lastDroppedItem: null
-          }))
-        )
-        setTitles(
-          jsonResponse
-            .slice()
-            .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
-            .map(obj => ({ ...obj, type: ItemTypes.TITLE }))
-        )
-        setScorer(jsonResponse.map(o => ({ [o.name]: undefined })))
-      })
-  }, [props.match])
+    fetchCharacters(charIDs).then(response => {
+      setPics(
+        shuffle(response).map(obj => ({
+          ...obj,
+          accepts: ItemTypes.TITLE,
+          lastDroppedItem: null
+        }))
+      )
+      setTitles(
+        response
+          .slice()
+          .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+          .map(obj => ({ ...obj, type: ItemTypes.TITLE }))
+      )
+      setScorer(response.map(o => ({ [o.name]: undefined })))
+    })
+  }, [match])
 
   return (
     <DndProvider backend={HTML5Backend}>

@@ -3,21 +3,20 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
-import { randList, shuffle } from './../../utils'
-
 import PhotoBox from './PhotoBox'
 import NavBar from './../Layout/NavBar'
 
-const Characters = props => {
+import { randList, shuffle } from './../../utils'
+import fetchCharacters from './../../api/characters'
+
+const Characters = () => {
   const [characters, setCharacters] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${randList(493, 20)}`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setCharacters(shuffle(jsonResponse))
-      })
+    fetchCharacters(randList(493, 20)).then(response => {
+      setCharacters(shuffle(response))
+    })
     setLoading(false)
   }, [])
 

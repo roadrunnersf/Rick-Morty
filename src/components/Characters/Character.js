@@ -3,18 +3,18 @@ import React, { useState, useEffect } from 'react'
 import PhotoBox from './PhotoBox'
 import NavBar from './../Layout/NavBar.js'
 
-const Character = props => {
+import fetchCharacters from './../../api/characters'
+
+const Character = ({ match }) => {
   const [character, setCharacter] = useState({})
 
   useEffect(() => {
-    const id = props.match.params.id
+    const id = match.params.id
 
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setCharacter(jsonResponse)
-      })
-  }, [props.match])
+    fetchCharacters(id).then(response => {
+      setCharacter(response)
+    })
+  }, [match])
 
   return (
     <div>
