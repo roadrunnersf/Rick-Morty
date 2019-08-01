@@ -6,6 +6,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+
 import Characters from './Characters'
 import Character from './Characters/Character'
 import Guess from './Guess'

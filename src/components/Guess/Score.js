@@ -5,11 +5,13 @@ import { Progress } from 'reactstrap'
 const Score = ({ total, max, scorer }) => {
   const score = arrMatches(scorer)
   const wrong = arrWrong(scorer)
+
   return (
     <div>
       <div className="text-center">
         {score} of {max}
       </div>
+
       <Progress animated multi max={max} style={{ height: 40 }}>
         <Progress
           animated
@@ -18,6 +20,7 @@ const Score = ({ total, max, scorer }) => {
           value={score}
           max={max}
         ></Progress>
+
         <Progress
           animated
           bar

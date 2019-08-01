@@ -34,6 +34,7 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
         }
       >
         <CardImg src={image} style={{ opacity }} />
+
         <CardHeader className="text-center">
           {lastDroppedItem && lastDroppedItem.name}
         </CardHeader>
