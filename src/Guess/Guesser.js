@@ -50,7 +50,7 @@ const Guesser = () => {
     [droppedBoxTitles, pics]
   );
   useEffect(() => {
-    const charIDs = [1, 2, 3]; //randList(493, 6);
+    const charIDs = [1, 2, 3, 4]; //randList(493, 6);
 
     fetch(`https://rickandmortyapi.com/api/character/${charIDs}`)
       .then(response => response.json())
