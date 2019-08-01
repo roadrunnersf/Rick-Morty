@@ -32,9 +32,14 @@ const Characters = props => {
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        characters.map(character => (
-          <Link to={`/characters/${character.id}`}>
-            <PhotoBox character={character} width={250} height={450} />
+        characters.map((character, index) => (
+          <Link key={character.id} to={`/characters/${character.id}`}>
+            <PhotoBox
+              key={character.id}
+              character={character}
+              width={250}
+              height={450}
+            />
           </Link>
         ))
       )}

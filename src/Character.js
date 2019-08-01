@@ -7,7 +7,6 @@ const Character = props => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    console.log(props);
     const id = props.match.params.id;
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
       .then(response => response.json())
