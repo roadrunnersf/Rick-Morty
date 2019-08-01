@@ -1,10 +1,10 @@
-import React from "react";
-import { arrMatches, arrWrong } from "./../Functions/index.js";
-import { Progress } from "reactstrap";
+import React from 'react'
+import { arrMatches, arrWrong } from './../Functions/index.js'
+import { Progress } from 'reactstrap'
 
 const Score = ({ total, max, scorer }) => {
-  const score = arrMatches(scorer);
-  const wrong = arrWrong(scorer);
+  const score = arrMatches(scorer)
+  const wrong = arrWrong(scorer)
   return (
     <div>
       <div className="text-center">
@@ -27,6 +27,6 @@ const Score = ({ total, max, scorer }) => {
         ></Progress>
       </Progress>
     </div>
-  );
-};
-export default Score;
+  )
+}
+export default Score

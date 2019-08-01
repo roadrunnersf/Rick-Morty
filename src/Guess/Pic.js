@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDrop } from "react-dnd";
-import ItemTypes from "./ItemTypes";
-import { Card, CardImg, CardHeader, CardText, CardBody } from "reactstrap";
+import React, { useState } from 'react'
+import { useDrop } from 'react-dnd'
+import ItemTypes from './ItemTypes'
+import { Card, CardImg, CardHeader, CardText, CardBody } from 'reactstrap'
 
 const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
@@ -11,26 +11,26 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
     })
-  });
-  const isActive = canDrop && isOver;
-  let opacity = 1;
+  })
+  const isActive = canDrop && isOver
+  let opacity = 1
   if (isActive) {
-    opacity = 0.8;
+    opacity = 0.8
   } else if (canDrop) {
-    opacity = 1;
+    opacity = 1
   }
 
   return (
     <div
       ref={drop}
-      style={{ display: "inline-block", width: 250, height: 350, padding: 5 }}
+      style={{ display: 'inline-block', width: 250, height: 350, padding: 5 }}
     >
       <Card
         inverse
         color={
           (lastDroppedItem &&
-            (lastDroppedItem.name === name ? "success" : "danger")) ||
-          "primary"
+            (lastDroppedItem.name === name ? 'success' : 'danger')) ||
+          'primary'
         }
       >
         <CardImg src={image} style={{ opacity }} />
@@ -38,9 +38,9 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
           {lastDroppedItem && lastDroppedItem.name}
         </CardHeader>
 
-        {isActive ? <CardText>Release to drop</CardText> : ""}
+        {isActive ? <CardText>Release to drop</CardText> : ''}
       </Card>
     </div>
-  );
-};
-export default Pic;
+  )
+}
+export default Pic

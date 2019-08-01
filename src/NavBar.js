@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import React from 'react'
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 
 const NavBar = () => (
   <div>
@@ -15,6 +15,6 @@ const NavBar = () => (
       </Nav>
     </Navbar>
   </div>
-);
+)
 
-export default NavBar;
+export default NavBar

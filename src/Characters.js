@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
-import { Helmet } from "react-helmet";
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { Container, Row, Col } from 'reactstrap'
+import { Helmet } from 'react-helmet'
 
-import { randList, shuffle } from "./Functions";
+import { randList, shuffle } from './Functions'
 
-import PhotoBox from "./PhotoBox";
-import NavBar from "./NavBar";
+import PhotoBox from './PhotoBox'
+import NavBar from './NavBar'
 
 const Characters = props => {
-  const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [characters, setCharacters] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${randList(493, 20)}`)
       .then(response => response.json())
       .then(jsonResponse => {
-        setCharacters(shuffle(jsonResponse));
-      });
-    setLoading(false);
-  }, []);
-  console.log(characters);
+        setCharacters(shuffle(jsonResponse))
+      })
+    setLoading(false)
+  }, [])
+  console.log(characters)
   return (
     <div>
       <Helmet>
@@ -44,8 +44,8 @@ const Characters = props => {
         ))
       )}
     </div>
-  );
-};
+  )
+}
 
 // filter(photo => photo.name.toLowerCase().includes("rick") && photo.name !== "Morty Jr's interviewer").
-export default Characters;
+export default Characters
