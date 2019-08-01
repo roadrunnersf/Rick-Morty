@@ -29,7 +29,7 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
         inverse
         color={
           (lastDroppedItem &&
-            (lastDroppedItem.name === name ? "success" : "primary")) ||
+            (lastDroppedItem.name === name ? "success" : "danger")) ||
           "primary"
         }
       >
@@ -37,11 +37,7 @@ const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
         <CardHeader className="text-center">
           {lastDroppedItem && lastDroppedItem.name}
         </CardHeader>
-        {lastDroppedItem && (
-          <CardHeader>
-            {lastDroppedItem.name === name ? "true" : "false"}
-          </CardHeader>
-        )}
+
         {isActive ? <CardText>Release to drop</CardText> : ""}
       </Card>
     </div>
