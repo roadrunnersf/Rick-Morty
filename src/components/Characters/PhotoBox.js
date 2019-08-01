@@ -2,22 +2,22 @@ import React from 'react'
 import { Card, CardImg, CardText, CardBody, CardHeader } from 'reactstrap'
 //import ContentLoader from "react-content-loader";
 
-const PhotoBox = props => (
+const PhotoBox = ({ width, height, character }) => (
   <div
     style={{
       display: 'inline-block',
-      width: props.width,
-      height: props.height,
+      width: width,
+      height: height,
       padding: 5
     }}
   >
     <Card style={{ width: '100%', height: '100%' }} outline color="secondary">
-      <CardImg src={props.character.image} />
-      <CardHeader tag="h6">{props.character.name}</CardHeader>
+      <CardImg src={character.image} />
+      <CardHeader tag="h6">{character.name}</CardHeader>
       <CardBody>
-        <CardText>Species: {props.character.species}</CardText>
-        <CardText>Gender: {props.character.gender}</CardText>
-        <CardText>Status: {props.character.status}</CardText>
+        <CardText>Species: {character.species}</CardText>
+        <CardText>Gender: {character.gender}</CardText>
+        <CardText>Status: {character.status}</CardText>
       </CardBody>
     </Card>
   </div>
