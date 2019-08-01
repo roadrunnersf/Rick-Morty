@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrMatches, arrWrong } from './../Functions/index.js'
+import { arrMatches, arrWrong } from './../../utils'
 import { Progress } from 'reactstrap'
 
 const Score = ({ total, max, scorer }) => {

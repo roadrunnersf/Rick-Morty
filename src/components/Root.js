@@ -7,8 +7,8 @@ import {
   Redirect
 } from 'react-router-dom'
 import Characters from './Characters'
-import Character from './Character'
-import Guess from './Guess/index'
+import Character from './Characters/Character'
+import Guess from './Guess'
 
 const Root = () => (
   <div>

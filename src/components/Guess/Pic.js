@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDrop } from 'react-dnd'
-import ItemTypes from './ItemTypes'
-import { Card, CardImg, CardHeader, CardText, CardBody } from 'reactstrap'
+import ItemTypes from './../../utils/ItemTypes'
+import { Card, CardImg, CardHeader, CardText } from 'reactstrap'
 
 const Pic = ({ image, name, accept, lastDroppedItem, onDrop }) => {
   const [{ canDrop, isOver }, drop] = useDrop({

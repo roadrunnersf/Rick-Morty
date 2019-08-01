@@ -5,14 +5,13 @@ import { Helmet } from 'react-helmet'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
-import { shuffle } from './../Functions'
-import createCharacterList from './createCharacterList'
-import ItemTypes from './ItemTypes'
+import { shuffle, createCharacterList } from './../../utils'
+import ItemTypes from './../../utils/ItemTypes.js'
 
 import Pic from './Pic'
 import Title from './Title'
 import Score from './Score'
-import NavBar from '../NavBar'
+import NavBar from './../Layout/NavBar'
 
 const Guess = props => {
   const [pics, setPics] = useState([])

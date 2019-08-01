@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
-import { randList, shuffle } from './Functions'
+import { randList, shuffle } from './../../utils'
 
 import PhotoBox from './PhotoBox'
-import NavBar from './NavBar'
+import NavBar from './../Layout/NavBar'
 
 const Characters = props => {
   const [characters, setCharacters] = useState([])
@@ -20,7 +20,7 @@ const Characters = props => {
       })
     setLoading(false)
   }, [])
-  console.log(characters)
+
   return (
     <div>
       <Helmet>
