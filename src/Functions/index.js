@@ -40,5 +40,14 @@ const arrMatches = arr => {
   }
   return counter;
 };
+const arrWrong = arr => {
+  const keys = arrKeys(arr);
+  const values = arrVals(arr);
+  let counter = 0;
+  for (var i = 0; i < arr.length; i++) {
+    values[i] && keys[i] !== values[i] && counter++;
+  }
+  return counter;
+};
 
-export { randList, shuffle, arrKeys, arrVals, arrMatches };
+export { randList, shuffle, arrKeys, arrVals, arrMatches, arrWrong };
