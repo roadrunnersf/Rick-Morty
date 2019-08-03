@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 
 import Characters from './Characters'
-import Character from './Characters/Character'
+import CharactersViewSingle from './Characters/CharactersViewSingle'
 import Guess from './Guess'
 
 const Root = () => (
@@ -17,7 +17,7 @@ const Root = () => (
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/characters" />} />
         <Route exact path="/characters" component={Characters} />
-        <Route path="/characters/:id" component={Character} />
+        <Route path="/characters/:id" component={CharactersViewSingle} />
         <Route exact path="/guess" component={Guess} />
         <Route path="/guess/:num" component={Guess} />
       </Switch>
