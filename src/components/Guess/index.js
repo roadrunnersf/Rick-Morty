@@ -69,7 +69,7 @@ const Guess = ({ match }) => {
           .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
           .map(obj => ({ ...obj, type: ItemTypes.TITLE }))
       )
-      setScorer(response.map(o => ({ [o.name]: undefined })))
+      setScorer(response.map(o => ({ [o.name]: null })))
     })
   }, [match])
 
