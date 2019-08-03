@@ -1,7 +1,11 @@
 // LIST GENERATION AND MANIPULATION
 
+const integerList = (start, length) => {
+  return Array.from({ length: length }, (v, k) => k + start)
+}
+
 const randList = (numMax, outputLength) => {
-  let array = Array.from({ length: numMax }, (v, k) => k + 1)
+  let array = integerList(1, numMax)
   array = shuffle(array)
   return array.slice(0, outputLength)
 }
